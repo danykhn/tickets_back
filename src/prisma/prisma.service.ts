@@ -1,41 +1,21 @@
-import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common'
+import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common'
 import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
 
-function parseConnectionString(url: string) {
-  const connectionString = url
-  
-  if (!connectionString) {
-    throw new Error('DATABASE_URL no está definida')
-  }
-
-  const match = connectionString.match(/^postgresql:\/\/(?:([^:]+):([^@]+)@)?([^:]+):(\d+)\/(.+)$/)
-  
-  if (!match) {
-    return { connectionString }
-  }
-
-  const [, user, password, host, port, database] = match
-  
-  return {
-    user: user || undefined,
-    password: password || undefined,
-    host,
-    port: parseInt(port, 10),
-    database,
-  }
-}
-
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
   constructor() {
-    const dbConfig = parseConnectionString(process.env.DATABASE_URL)
-    
+    const connectionString = process.env.DATABASE_URL
+    const dbUser = process.env.DB_USER
+    const dbPassword = process.env.DB_PASSWORD
+
     const pool = new Pool({
-      ...dbConfig,
+      connectionString: connectionString,
+      user: dbUser,
+      password: dbPassword,
     })
-    
+
     const adapter = new PrismaPg(pool)
     super({ adapter })
   }
