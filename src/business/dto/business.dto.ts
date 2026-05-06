@@ -1,0 +1,49 @@
+import { IsString, IsOptional, IsDateString } from 'class-validator'
+
+export class CreateBusinessDto {
+  @IsString()
+  @IsOptional()
+  logo?: string
+
+  @IsString()
+  businessName: string
+
+  @IsString()
+  legalName: string
+
+  @IsString()
+  cuit: string
+
+  @IsString()
+  @IsOptional()
+  ingresosBrutos?: string
+
+  @IsString()
+  @IsOptional()
+  address?: string
+
+  @IsString()
+  @IsOptional()
+  city?: string
+
+  @IsString()
+  @IsOptional()
+  postalCode?: string
+
+  @IsString()
+  @IsOptional()
+  province?: string
+
+  @IsDateString()
+  @IsOptional()
+  startDate?: string
+
+  @IsString()
+  @IsOptional()
+  taxCategory?: string
+}
+
+export class SearchBusinessDto {
+  @IsString()
+  q: string
+}

@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Business {
+  id             String    @id @default(uuid())
+  logo           String?
+  businessName   String
+  legalName      String
+  cuit           String    @unique
+  ingresosBrutos String?
+  address       String?
+  city          String?
+  postalCode    String?
+  province      String?
+  startDate     DateTime?
+  taxCategory   String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([businessName])
+  @@index([legalName])
+  @@index([cuit])
+}
