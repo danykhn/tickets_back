@@ -4,6 +4,13 @@ import { PrismaModule } from './prisma/prisma.module'
 import { BusinessModule } from './business/business.module'
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, BusinessModule]
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env.local', '.env'],
+    }),
+    PrismaModule,
+    BusinessModule,
+  ],
 })
 export class AppModule {}
