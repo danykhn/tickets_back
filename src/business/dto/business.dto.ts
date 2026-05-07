@@ -41,6 +41,23 @@ export class CreateBusinessDto {
   @IsString()
   @IsOptional()
   taxCategory?: string
+
+  // Customer info
+  @IsString()
+  @IsOptional()
+  customerTaxCategory?: string
+
+  @IsString()
+  @IsOptional()
+  customerCity?: string
+
+  @IsString()
+  @IsOptional()
+  customerPostalCode?: string
+
+  @IsString()
+  @IsOptional()
+  customerProvince?: string
 }
 
 export class SearchBusinessDto {

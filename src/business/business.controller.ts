@@ -8,6 +8,8 @@ export class BusinessController {
 
   @Post()
   create(@Body() createBusinessDto: CreateBusinessDto) {
+    console.log('🔔 [CONTROLLER] POST /business recibido')
+    console.log('📦 Body recibido:', JSON.stringify(createBusinessDto, null, 2))
     return this.businessService.create(createBusinessDto)
   }
 
