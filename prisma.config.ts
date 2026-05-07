@@ -1,11 +1,3 @@
-import { defineConfig } from 'prisma/config'
-import * as dotenv from 'dotenv'
-
-dotenv.config()
-
-export default defineConfig({
-  schema: './prisma/schema.prisma',
-  datasource: {
-    url: process.env.DATABASE_URL!
-  }
-})
+// This file is for Prisma CLI configuration only
+// The actual DATABASE_URL is read from .env file
+export {}
