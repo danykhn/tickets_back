@@ -22,6 +22,10 @@ model Business {
   taxCategory   String?
   
   // Customer info
+  customerName          String?
+  customerLastName      String?
+  customerCuit          String?
+  customerAddress       String?
   customerTaxCategory   String?
   customerCity          String?
   customerPostalCode    String?
