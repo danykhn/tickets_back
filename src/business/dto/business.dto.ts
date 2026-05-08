@@ -45,6 +45,22 @@ export class CreateBusinessDto {
   // Customer info
   @IsString()
   @IsOptional()
+  customerName?: string
+
+  @IsString()
+  @IsOptional()
+  customerLastName?: string
+
+  @IsString()
+  @IsOptional()
+  customerCuit?: string
+
+  @IsString()
+  @IsOptional()
+  customerAddress?: string
+
+  @IsString()
+  @IsOptional()
   customerTaxCategory?: string
 
   @IsString()
